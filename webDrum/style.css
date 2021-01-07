@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: yellow;
+}
+.drumBox {
+  margin: 0 10px;
+  padding: 10px 5px;
+  width: 10vw;
+  text-align: center;
+  border: 1px solid #000;
+}
