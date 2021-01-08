@@ -1,18 +1,29 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: "Roboto", sans-serif;
 }
 .container {
   display: flex;
+  background: center url(./img/photo-1570800658349-c7051f4d6f57.jfif) no-repeat;
+  background-size: cover;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: yellow;
 }
 .drumBox {
   margin: 0 10px;
-  padding: 10px 5px;
-  width: 10vw;
+  padding: 30px 5px;
+  width: 12vw;
+  background: rgba(255, 255, 255, 0.3);
   text-align: center;
-  border: 1px solid #000;
+  border: 3px solid #000;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+.drumBox:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+.drumBox strong {
+  display: block;
 }
