@@ -1,0 +1,102 @@
+:root {
+  --background-color: #eeeff8;
+  --content-background-color: #fefeff;
+  --title-Text-color: #254050;
+  --subText-color: #7b899c;
+}
+body,
+h1,
+h2,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: "Lato", sans-serif;
+}
+.wrap {
+  width: 1532px;
+  margin: 0 auto;
+  padding: 101px 0 0;
+}
+
+header h1 {
+  font-size: 42px;
+  color: var(--title-Text-color);
+}
+header p {
+  font-size: 25px;
+  color: var(--subText-color);
+}
+header .dashBox {
+  padding: 48px 60px;
+}
+.dashBox {
+  margin: 0 0 30px;
+  background-color: var(--content-background-color);
+  border-radius: 8px;
+}
+
+/* 섹션 */
+.mainBox {
+  overflow: hidden;
+}
+.mainBox .dashBox {
+  float: left;
+}
+
+.content-head {
+  padding: 30px 0 30px 81px;
+  border-bottom: 1px solid #e9ecf2;
+}
+.content-head h2 {
+  position: relative;
+}
+#calendar {
+  margin-right: 32px;
+}
+#calendar h2::before {
+  content: "";
+  position: absolute;
+  left: -42px;
+  top: 2px;
+  width: 27px;
+  height: 25px;
+  background: url(./img/calendar.png) no-repeat 0px 0px;
+}
+#calendar .calendar {
+  overflow: hidden;
+  width: 843px;
+  height: 525px;
+}
+
+#calendar .calendar div {
+  float: left;
+  padding: 40px;
+  height: 100%;
+  border: 1px solid #000;
+  box-sizing: border-box;
+}
+
+#calendar .calendar .calendar_sub {
+  width: 30%;
+}
+#calendar .calendar .calendar_main {
+  width: 70%;
+}
+
+#task {
+  width: 657px;
+  height: 615px;
+}
+#task h2::before {
+  content: "";
+  position: absolute;
+  left: -42px;
+  top: 2px;
+  width: 28px;
+  height: 28px;
+  background: url(./img/task.png) no-repeat 0px 0px;
+}
