@@ -8,7 +8,9 @@
 body,
 h1,
 h2,
+h4,
 p,
+input,
 table,
 tr,
 th,
@@ -98,21 +100,71 @@ header .dashBox {
   overflow: hidden;
   width: 843px;
   height: 525px;
+  padding: 40px 35px 40px 40px;
+  box-sizing: border-box;
 }
 
 #calendar .calendar > div {
-  float: left;
-  padding: 40px;
   height: 100%;
-  border: 1px solid #000;
   box-sizing: border-box;
 }
 
 #calendar .calendar .calendar_sub {
-  width: 30%;
+  float: left;
+  width: 280px;
 }
+#calendar .calendar .calendar_sub h3 {
+  font-size: 18px;
+}
+#calendar .calendar .calendar_sub > div {
+  overflow-y: auto;
+  width: 100%;
+  height: 372px;
+}
+#calendar .calendar .calendar_sub > div::-webkit-scrollbar {
+  width: 8px;
+}
+#calendar .calendar .calendar_sub > div::-webkit-scrollbar-thumb {
+  background: #23213b;
+  border-radius: 16px;
+}
+#calendar .calendar .calendar_sub .subEvent {
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+#calendar .calendar .calendar_sub .subEvent > div {
+  float: left;
+}
+#calendar .calendar .calendar_sub .subEvent input {
+  display: block;
+  width: 100%;
+  border: none;
+  padding: 3px 0;
+}
+#calendar .calendar .calendar_sub .subEvent .event_title {
+  overflow: hidden;
+  width: 170px;
+  margin-bottom: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+#calendar .calendar .calendar_sub .subEvent .event_content {
+  color: #878fa4;
+  font-size: 12px;
+}
+#calendar .calendar .calendar_sub .subEvent .subEvent_poster {
+  padding-right: 12px;
+}
+
 #calendar .calendar .calendar_main {
-  width: 70%;
+  float: right;
+  width: 457px;
+  height: 421px;
+}
+#calendar .calendar .calendar_main .calendar_interface {
+  border: 1px solid #eaedf3;
 }
 #calendar .calendar_time {
   position: relative;
@@ -165,7 +217,7 @@ header .dashBox {
 }
 #task {
   width: 657px;
-  height: 615px;
+  height: 611px;
 }
 #task h2::before {
   content: "";
