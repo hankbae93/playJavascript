@@ -8,6 +8,8 @@
 body,
 h1,
 h2,
+button,
+h3,
 h4,
 p,
 input,
@@ -67,26 +69,7 @@ header .dashBox {
 #calendar {
   margin-right: 32px;
 }
-#calendar .content-head {
-  position: relative;
-}
-#calendar .content-head .createEvent {
-  position: absolute;
-  right: 40px;
-  top: 19px;
-  background-color: #286df9;
-  padding: 16px 24px;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  border-radius: 3px;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
-}
-#calendar .content-head .createEvent span {
-  font-size: 14px;
-  font-weight: bold;
-  color: #fff;
-}
+
 #calendar h2::before {
   content: "";
   position: absolute;
@@ -109,12 +92,30 @@ header .dashBox {
   box-sizing: border-box;
 }
 
-#calendar .calendar .calendar_sub {
+#calendar .calendar_sub {
   float: left;
   width: 280px;
 }
-#calendar .calendar .calendar_sub h3 {
+#calendar .calendar_sub h3 {
+  margin-bottom: 20px;
   font-size: 18px;
+}
+#calendar .calendar_sub .createEvent {
+  background-color: #286df9;
+  margin: 0 0 15px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+#calendar .calendar_sub .createEvent span {
+  display: block;
+  padding: 16px 24px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
 }
 #calendar .calendar .calendar_sub > div {
   overflow-y: auto;
@@ -130,6 +131,7 @@ header .dashBox {
 }
 #calendar .calendar .calendar_sub .subEvent {
   overflow: hidden;
+  /* display: none; */
   margin-bottom: 30px;
 }
 #calendar .calendar .calendar_sub .subEvent > div {
@@ -161,7 +163,6 @@ header .dashBox {
 #calendar .calendar .calendar_main {
   float: right;
   width: 457px;
-  height: 421px;
 }
 #calendar .calendar .calendar_main .calendar_interface {
   border: 1px solid #eaedf3;
@@ -213,8 +214,11 @@ header .dashBox {
 #calendar table td {
   font-size: 14px;
   font-weight: bold;
-  height: 51px;
 }
+#calendar table td.today {
+  background-color: #286ef9a8;
+}
+
 #task {
   width: 657px;
   height: 611px;
