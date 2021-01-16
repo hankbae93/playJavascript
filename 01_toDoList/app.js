@@ -2,13 +2,13 @@
 
 // 달력
 const 
-    calendar = document.querySelector('.calendar'),
+    calendar = document.querySelector('#calendar'),
     calendarUI = calendar.querySelector('.calendar_interface'),
     calendarTable = calendarUI.querySelector('table'),
     calendarDay = calendarTable.querySelectorAll('td'),
     calendarTime = calendarUI.querySelector('.calendar_time'),
-    calendarEvent = calendar.querySelector('.calendar_sub'),
-    calendarEventBtn = calendarEvent.querySelector('.createEvent');
+    calendarMgoal = calendar.querySelector('.calendar_month'),
+    calendarCreateGo = calendar.querySelector('.createGoal');
     
 const 
     calendarPrevMonth = calendarUI.querySelector('.prevMonth'),
@@ -18,7 +18,7 @@ const
 
 // 달력 채우기
 const MONTH = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];      
-const todayDownload = new Date();
+const todayDownload = new Date(); //오늘 자
 
 function fillMonthYear(month, year) {
     const thisMonth = MONTH[month];
@@ -98,13 +98,26 @@ fillCalendar(todayDownload);
 
 
 // 이벤트 저장 및 메모
-
-calendarEventBtn.addEventListener('click',(e) => {    
-    e.target.classList.toggle('saveEvent');
-    if (e.target.classList.contains('saveEvent')) {
-        e.target.innerHTML = 'Save';
+let createOrSave = true;
+function createOrSaveBtn() {
+    if(createOrSave) {
+        document.body.style.background = '#222831';
+        this.firstElementChild.textContent = 'Save';
+        createOrSave = false;
     } else {
-        e.target.innerHTML = 'Create Event';
+        document.body.style.background = 'var(--background-color)';
+        this.firstElementChild.textContent = 'Create Goals';
+        createOrSave = true;
+    }        
+}
+
+calendarCreateGo.addEventListener('click',createOrSaveBtn);
+
+calendarMgoal.addEventListener('click',(e) => {    
+    if (e.target.checked) {
+        e.target.parentElement.classList.add('checked');
+    } else {
+        e.target.parentElement.classList.remove('checked');
     }    
 });
 

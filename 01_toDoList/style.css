@@ -21,12 +21,20 @@ thead,
 tbody {
   margin: 0;
   padding: 0;
+  outline: 0;
+}
+
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
 }
 
 body {
   font-size: 14px;
   background-color: var(--background-color);
   font-family: "Lato", sans-serif;
+  transition: all 0.3s ease;
 }
 .wrap {
   width: 1532px;
@@ -60,16 +68,18 @@ header .dashBox {
 }
 
 .content-head {
+  overflow: hidden;
+  position: relative;
   padding: 30px 0 30px 81px;
   border-bottom: 1px solid #e9ecf2;
 }
 .content-head h2 {
   position: relative;
 }
+
 #calendar {
   margin-right: 32px;
 }
-
 #calendar h2::before {
   content: "";
   position: absolute;
@@ -78,6 +88,22 @@ header .dashBox {
   width: 27px;
   height: 25px;
   background: url(./img/calendar.png) no-repeat 0px 0px;
+}
+#calendar .createGoal {
+  position: absolute;
+  right: 20px;
+  top: 18px;
+  background-color: #286df9;
+  border-radius: 3px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+#calendar .createGoal span {
+  display: block;
+  padding: 16px 24px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
 }
 #calendar .calendar {
   overflow: hidden;
@@ -92,72 +118,69 @@ header .dashBox {
   box-sizing: border-box;
 }
 
-#calendar .calendar_sub {
+#calendar .calendar_month {
   float: left;
   width: 280px;
 }
-#calendar .calendar_sub h3 {
+#calendar .calendar_month h3 {
   margin-bottom: 20px;
+  text-align: center;
   font-size: 18px;
 }
-#calendar .calendar_sub .createEvent {
-  background-color: #286df9;
-  margin: 0 0 15px;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  border-radius: 3px;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
-}
 
-#calendar .calendar_sub .createEvent span {
-  display: block;
-  padding: 16px 24px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #fff;
-}
-#calendar .calendar .calendar_sub > div {
+#calendar .calendar_month > div {
   overflow-y: auto;
   width: 100%;
   height: 372px;
 }
-#calendar .calendar .calendar_sub > div::-webkit-scrollbar {
+#calendar .calendar .calendar_month > div::-webkit-scrollbar {
   width: 8px;
 }
-#calendar .calendar .calendar_sub > div::-webkit-scrollbar-thumb {
+#calendar .calendar .calendar_month > div::-webkit-scrollbar-thumb {
   background: #23213b;
   border-radius: 16px;
 }
-#calendar .calendar .calendar_sub .subEvent {
-  overflow: hidden;
-  /* display: none; */
-  margin-bottom: 30px;
+#calendar .calendar .calendar_month .month_goal .month_goal_con {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px 5px;
+  margin: 10px 0;
+  border-radius: 25px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
-#calendar .calendar .calendar_sub .subEvent > div {
-  float: left;
+#calendar .month_goal_con:hover {
+  background: #ffd56b;
 }
-#calendar .calendar .calendar_sub .subEvent input {
-  display: block;
-  width: 100%;
+
+#calendar .month_goal_con input {
+  padding: 5px 0;
   border: none;
-  padding: 3px 0;
+  background: none;
 }
-#calendar .calendar .calendar_sub .subEvent .event_title {
-  overflow: hidden;
-  width: 170px;
-  margin-bottom: 5px;
-  font-size: 16px;
+#calendar .month_goal_con label {
+  display: block;
+  width: 10px;
+  height: 10px;
+  box-shadow: inset 0 0 0 2px #00005c;
+  padding: 10px;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+#calendar .month_goal_con label.checked {
+  box-shadow: inset 0 0 0 8px #00005c;
+}
+#calendar .month_goal_con input[type="checkbox"] {
+  display: none;
+}
+#calendar .month_goal_con input[type="text"] {
+  color: var(--title-Text-color);
+  font-size: 13px;
   font-weight: bold;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-#calendar .calendar .calendar_sub .subEvent .event_content {
-  color: #878fa4;
-  font-size: 12px;
-}
-#calendar .calendar .calendar_sub .subEvent .subEvent_poster {
-  padding-right: 12px;
+  border-bottom: 1px solid #00005c;
 }
 
 #calendar .calendar .calendar_main {
@@ -214,6 +237,10 @@ header .dashBox {
 #calendar table td {
   font-size: 14px;
   font-weight: bold;
+}
+#calendar table th:first-child,
+#calendar table tr td:first-child {
+  color: #f04324;
 }
 #calendar table td.today {
   background-color: #286ef9a8;
