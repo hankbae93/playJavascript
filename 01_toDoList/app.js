@@ -7,7 +7,8 @@ const
     calendarTable = calendarUI.querySelector('table'),
     calendarDay = calendarTable.querySelectorAll('td'),
     calendarTime = calendarUI.querySelector('.calendar_time'),
-    calendarMgoal = calendar.querySelector('.calendar_month'),
+    calendarMonth = calendar.querySelector('.calendar_month'),
+    calMonGoal = calendarMonth.querySelector('.month_goal'),    
     calendarCreateGo = calendar.querySelector('.createGoal');
     
 const 
@@ -99,26 +100,75 @@ fillCalendar(todayDownload);
 
 // 이벤트 저장 및 메모
 let createOrSave = true;
-function createOrSaveBtn() {
-    if(createOrSave) {
-        document.body.style.background = '#222831';
-        this.firstElementChild.textContent = 'Save';
-        createOrSave = false;
-    } else {
-        document.body.style.background = 'var(--background-color)';
-        this.firstElementChild.textContent = 'Create Goals';
-        createOrSave = true;
-    }        
+
+function createGoals() {
+    let ele = document.createElement('div');
+    ele.classList.add('month_goal_con');
+    ele.innerHTML = 
+        `
+        <label>
+        <input type="checkbox" class="checkbox" />
+        </label>                                    
+        <input type="text" readonly />
+        <div class="goal_delete hide">
+            <div></div>
+            <div></div>
+        </div>
+        `;
+    return ele;
 }
 
-calendarCreateGo.addEventListener('click',createOrSaveBtn);
 
-calendarMgoal.addEventListener('click',(e) => {    
+function checkGoal() {   
+    const mGoals = calMonGoal.querySelectorAll('.month_goal_con');
+    mGoals.forEach((con) =>{
+        const checkBox = con.querySelector(`input[type="checkbox"]`);
+        const typeBox = con.querySelector(`input[type="text"]`);
+        const deleteBtn = con.querySelector('.goal_delete');
+        // 체크 기능
+        if(checkBox.checked){
+            typeBox.readOnly = false;
+            deleteBtn.classList.remove('hide');
+        } else {
+            typeBox.readOnly = true;
+            deleteBtn.classList.add('hide');
+        }
+
+        
+    })
+}
+
+function deleteGoal() {
+    const deleteBtn = calMonGoal.querySelectorAll('.goal_delete');
+    
+}
+
+
+
+calMonGoal.addEventListener('click', (e) => {          
+    //현재 클릭한 체크박스 체크 or 해제
     if (e.target.checked) {
-        e.target.parentElement.classList.add('checked');
+        e.target.parentElement.classList.add('checked');        
     } else {
-        e.target.parentElement.classList.remove('checked');
-    }    
+        e.target.parentElement.classList.remove('checked');       
+    }
+    checkGoal();   
+    deleteGoal();
+    // 삭제할 때
+    
 });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+calendarCreateGo.addEventListener('click', () => { calMonGoal.appendChild(createGoals());});

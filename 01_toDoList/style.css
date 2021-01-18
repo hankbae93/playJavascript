@@ -4,7 +4,10 @@
   --title-Text-color: #254050;
   --subText-color: #7b899c;
 }
-
+.hide {
+  display: none;
+  opacity: 0;
+}
 body,
 h1,
 h2,
@@ -95,7 +98,11 @@ header .dashBox {
   top: 18px;
   background-color: #286df9;
   border-radius: 3px;
+  transition: all 0.2s ease;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+#calendar .createGoal:active {
+  box-shadow: none;
 }
 
 #calendar .createGoal span {
@@ -104,6 +111,10 @@ header .dashBox {
   font-size: 14px;
   font-weight: bold;
   color: #fff;
+  transition: all 0.2s ease;
+}
+#calendar .createGoal span:active {
+  transform: scale(1.2);
 }
 #calendar .calendar {
   overflow: hidden;
@@ -133,14 +144,15 @@ header .dashBox {
   width: 100%;
   height: 372px;
 }
-#calendar .calendar .calendar_month > div::-webkit-scrollbar {
+#calendar .calendar_month > div::-webkit-scrollbar {
   width: 8px;
 }
-#calendar .calendar .calendar_month > div::-webkit-scrollbar-thumb {
+#calendar .calendar_month > div::-webkit-scrollbar-thumb {
   background: #23213b;
   border-radius: 16px;
 }
-#calendar .calendar .calendar_month .month_goal .month_goal_con {
+#calendar .calendar_month .month_goal .month_goal_con {
+  position: relative;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -149,7 +161,6 @@ header .dashBox {
   border-radius: 25px;
   box-sizing: border-box;
   transition: all 0.3s ease;
-  cursor: pointer;
 }
 #calendar .month_goal_con:hover {
   background: #ffd56b;
@@ -182,7 +193,31 @@ header .dashBox {
   font-weight: bold;
   border-bottom: 1px solid #00005c;
 }
-
+#calendar .month_goal_con .goal_delete {
+  position: absolute;
+  right: 1px;
+  top: -5px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+#calendar .month_goal_con .goal_delete div {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 4px;
+  background-color: #eb596e;
+  transform: translate(-50%, -50%) rotate(0deg);
+  transform-origin: center;
+}
+#calendar .month_goal_con .goal_delete div {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+#calendar .month_goal_con .goal_delete div:first-child {
+  transform: translate(-50%, -50%) rotate(135deg);
+}
 #calendar .calendar .calendar_main {
   float: right;
   width: 457px;
