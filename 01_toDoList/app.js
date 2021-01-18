@@ -9,7 +9,8 @@ const
     calendarTime = calendarUI.querySelector('.calendar_time'),
     calendarMonth = calendar.querySelector('.calendar_month'),
     calMonGoal = calendarMonth.querySelector('.month_goal'),    
-    calendarCreateGo = calendar.querySelector('.createGoal');
+    calendarCreateGo = calendar.querySelector('.createGoal'),
+    calendarSaveBtn = calendarMonth.querySelector('.month_save');
     
 const 
     calendarPrevMonth = calendarUI.querySelector('.prevMonth'),
@@ -115,7 +116,8 @@ function createGoals() {
             <div></div>
         </div>
         `;
-    return ele;
+    calMonGoal.appendChild(ele); 
+    return;
 }
 
 
@@ -140,22 +142,49 @@ function checkGoal() {
 
 function deleteGoal() {
     const deleteBtn = calMonGoal.querySelectorAll('.goal_delete');
-    
+    deleteBtn.forEach((item) => {
+        item.addEventListener('click', () => {            
+            item.parentElement.remove();
+        });
+    })
 }
 
+const goalArr = [];
+const GOAL = 'GOAL';
+function saveGoal() {
+    const input = calMonGoal.querySelectorAll('input[type="text"]');
+    goalArr.length = 0; // 저장데이터 초기화
+    input.forEach((item,idx) => {
+     const data = {
+         'key' : idx,
+         'content': item.value
+     };
+     goalArr.push(data);
+    });   
+    localStorage.setItem(GOAL,JSON.stringify(goalArr));
+}
 
+function loadGoal() {
+    const loadGoals = localStorage.getItem(GOAL);
+    if (loadGoals) {
+        const parsedToGoal = JSON.parse(loadGoals); // 문자화되있던 데이터 다시 객체로 변환
+        parsedToGoal.forEach((goal, idx) => {
+            createGoals();
+            const mGoals = calMonGoal.querySelectorAll('.month_goal_con');
+            mGoals[idx].querySelector('input[type="text"]').value = goal.content;
+        });
+    }
+}
 
-calMonGoal.addEventListener('click', (e) => {          
+calMonGoal.addEventListener('click', (e) => {    
     //현재 클릭한 체크박스 체크 or 해제
     if (e.target.checked) {
         e.target.parentElement.classList.add('checked');        
     } else {
         e.target.parentElement.classList.remove('checked');       
     }
-    checkGoal();   
-    deleteGoal();
-    // 삭제할 때
-    
+    checkGoal();       
+    deleteGoal();          
 });
 
 
@@ -169,6 +198,6 @@ calMonGoal.addEventListener('click', (e) => {
 
 
 
-
-
-calendarCreateGo.addEventListener('click', () => { calMonGoal.appendChild(createGoals());});
+calendarSaveBtn.addEventListener('click',saveGoal);
+calendarCreateGo.addEventListener('click',createGoals);
+window.onload = loadGoal();
