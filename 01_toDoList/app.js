@@ -21,6 +21,7 @@ const
 // 달력 채우기
 const MONTH = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];      
 const todayDownload = new Date(); //오늘 자
+const currentCalendar = {};
 
 function fillMonthYear(month, year) {
     const thisMonth = MONTH[month];
@@ -47,6 +48,11 @@ function fillCalendar(DAY) {
     
     fillMonthYear(month, year);
     fillDay(startDay.getDay(), lastDay); // 첫날 요일, 마지막 날짜
+    // 현재 보여주는 달에 따라 이벤트 각각 저장
+    currentCalendar.month = month;
+    currentCalendar.year = year;
+    const mGoals = calMonGoal.querySelectorAll('.month_goal_con');
+    mGoals.remove
 }
 
 // 달력 변경
@@ -77,7 +83,9 @@ function changeCalendar(cMonth) {
     const changeDate = new Date(dayString);    
 
     resetCalendar();
-    fillCalendar(changeDate);
+    fillCalendar(changeDate);    
+    resetGoal();
+    loadGoal();
 }
 
 function resetCalendar() {
@@ -134,10 +142,8 @@ function checkGoal() {
         } else {
             typeBox.readOnly = true;
             deleteBtn.classList.add('hide');
-        }
-
-        
-    })
+        }        
+    });
 }
 
 function deleteGoal() {
@@ -150,30 +156,43 @@ function deleteGoal() {
 }
 
 const goalArr = [];
+let monthArr;
 const GOAL = 'GOAL';
 function saveGoal() {
     const input = calMonGoal.querySelectorAll('input[type="text"]');
     goalArr.length = 0; // 저장데이터 초기화
     input.forEach((item,idx) => {
-     const data = {
-         'key' : idx,
-         'content': item.value
-     };
-     goalArr.push(data);
+        if (item.value) { 
+            const data = {
+                'key' : idx,
+                'content': item.value,                
+            };
+            goalArr.push(data);
+        }
     });   
-    localStorage.setItem(GOAL,JSON.stringify(goalArr));
+    monthArr = `${MONTH[currentCalendar.month]}-${currentCalendar.year}`;    
+    localStorage.setItem(monthArr,JSON.stringify(goalArr));
 }
+        
 
 function loadGoal() {
-    const loadGoals = localStorage.getItem(GOAL);
+    monthArr = `${MONTH[currentCalendar.month]}-${currentCalendar.year}`;
+    const loadGoals = localStorage.getItem(monthArr);
     if (loadGoals) {
         const parsedToGoal = JSON.parse(loadGoals); // 문자화되있던 데이터 다시 객체로 변환
         parsedToGoal.forEach((goal, idx) => {
             createGoals();
             const mGoals = calMonGoal.querySelectorAll('.month_goal_con');
-            mGoals[idx].querySelector('input[type="text"]').value = goal.content;
+            mGoals[idx].querySelector('input[type="text"]').value = goal.content;            
         });
     }
+}
+
+function resetGoal() {
+    const mGoals = calMonGoal.querySelectorAll('.month_goal_con');
+    for (let item of mGoals) {
+        item.remove();
+    }    
 }
 
 calMonGoal.addEventListener('click', (e) => {    
