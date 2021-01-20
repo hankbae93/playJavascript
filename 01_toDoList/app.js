@@ -108,7 +108,9 @@ fillCalendar(todayDownload);
 
 
 // 이벤트 저장 및 메모
+const goalArr = [];
 let createOrSave = true;
+let monthArr;
 
 function createGoals() {
     let ele = document.createElement('div');
@@ -155,9 +157,7 @@ function deleteGoal() {
     })
 }
 
-const goalArr = [];
-let monthArr;
-const GOAL = 'GOAL';
+
 function saveGoal() {
     const input = calMonGoal.querySelectorAll('input[type="text"]');
     goalArr.length = 0; // 저장데이터 초기화

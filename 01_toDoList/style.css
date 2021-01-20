@@ -292,11 +292,12 @@ header .dashBox {
   background-color: #286ef9a8;
 }
 
-#task {
+/* 낙서장 */
+#scratch {
   width: 657px;
   height: 611px;
 }
-#task h2::before {
+#scratch h2::before {
   content: "";
   position: absolute;
   left: -42px;
@@ -304,4 +305,19 @@ header .dashBox {
   width: 28px;
   height: 28px;
   background: url(./img/task.png) no-repeat 0px 0px;
+}
+#scratch #scratchPaper {
+  width: 100%;
+  height: 525px;
+}
+#scratch .select_scratch {
+  position: absolute;
+  right: 40px;
+  top: 30px;
+  font-size: 20px;
+}
+#scratch .select_scratch .scratch_brush {
+  display: inline-block;
+  margin: 0 8px;
+  color: #23213b;
 }
