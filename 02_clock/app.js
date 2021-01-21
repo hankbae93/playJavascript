@@ -12,7 +12,12 @@ const
     analogClock = content.querySelector('#analog_clock'),
     hrs = analogClock.querySelector('.hrs'),
     min = analogClock.querySelector('.min'),
-    sec = analogClock.querySelector('.sec');
+    sec = analogClock.querySelector('.sec'),
+    // 타이머
+    timer = content.querySelector('#timer'),
+    timerWatch = timer.querySelector('span'),
+    timerStart = timer.querySelector('.start'),
+    timerReset = timer.querySelector('.reset');
     
 
 //버튼 슬라이드 조작
@@ -64,3 +69,52 @@ function analogTickin() {
 setInterval(analogTickin, 1000);
 
 // 타이머
+let hour = 0;
+let minute = 0;
+let second = 0;
+let ms = 0;
+let stop = true;
+let timerSW;
+function timerTickin() {
+    if (ms > 98) {
+        ms = 0;
+        second++;
+    } else if (second > 58) {
+        second = 0;
+        minute++;
+    } else if (minute > 58) {
+        minute = 0;
+        hour++;
+    } else {
+        ms++;
+    }               
+    
+    timerWatch.innerText = `${
+        hour < 10 ? '0'+hour : hour
+    } : ${
+        minute < 10 ? '0'+minute : minute
+    } : ${
+        second < 10 ? '0'+second : second
+    } : ${
+        ms < 10 ? '0'+ms : ms
+    }`;
+}
+
+function timerOn(e) {
+    if (stop) {
+        this.classList.add('off');
+        timerSW = setInterval(timerTickin, 10);
+        stop = false;
+    } else {
+        this.classList.remove('off');
+        clearInterval(timerSW);
+        stop = true;
+    }
+}
+
+function timeReset() {
+    timerWatch.innerText = "00 : 00 : 00 : 00";
+}
+
+timerStart.addEventListener('click',timerOn);
+timerReset.addEventListener('click', timeReset);
