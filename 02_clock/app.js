@@ -1,19 +1,25 @@
 'use strict';
 const
     container = document.querySelector('.container'),
-    content = container.querySelector('.content'),    
+    content = container.querySelector('.content'),  
+    // 버튼  
     btnsBox = container.querySelector('.btns'),
     btns = btnsBox.querySelectorAll('button'),
+    // 디지털 시계
     digitalClock = content.querySelector('#digital_clock'),
-    day = digitalClock.querySelectorAll('span');
+    day = digitalClock.querySelectorAll('span'),
+    // 아날로그 시계
+    analogClock = content.querySelector('#analog_clock'),
+    hrs = analogClock.querySelector('.hrs'),
+    min = analogClock.querySelector('.min'),
+    sec = analogClock.querySelector('.sec');
     
 
 //버튼 슬라이드 조작
 btns.forEach((btn, idx) => btn.addEventListener('click', (e) => {
     const contentWidth = content.querySelector('div').clientWidth;           
-    btns.forEach(btn => {
-        if (btn.classList.contains('clicked')) btn.classList.remove('clicked');
-    });
+    const clickBtn = btnsBox.querySelector('.clicked');
+    clickBtn.classList.remove('clicked');
     btn.classList.add('clicked');
     content.style.transform = `translateX(-${contentWidth * idx}px)`;
 }));
@@ -41,3 +47,20 @@ setDay();
 setInterval(digitalTickin, 1000);
 
 // 아날로그 시계
+function analogTickin() {
+    const now = new Date();
+    const seconds = now.getSeconds();
+    const secondsDegrees = ((seconds / 60) * 360);      
+    sec.style.transform = `translate(-50%, -50%) rotate(${secondsDegrees}deg)`;
+    
+    const mins = now.getMinutes();
+    const minsDegrees = ((mins / 60) * 360);
+    min.style.transform = `translate(-50%, -50%)  rotate(${minsDegrees}deg)`;
+
+    const hours = now.getHours();
+    const hoursDegrees = ((hours / 12) * 360);
+    hrs.style.transform = `translate(-50%, -50%)  rotate(${hoursDegrees}deg)`;    
+}
+setInterval(analogTickin, 1000);
+
+// 타이머
