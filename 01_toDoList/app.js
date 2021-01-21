@@ -102,7 +102,7 @@ calendarNextMonth.addEventListener('click', () => {
 });
 
 
-fillCalendar(todayDownload);
+
 
 
 
@@ -126,8 +126,7 @@ function createGoals() {
             <div></div>
         </div>
         `;
-    calMonGoal.appendChild(ele); 
-    return;
+    calMonGoal.appendChild(ele);     
 }
 
 
@@ -154,7 +153,7 @@ function deleteGoal() {
         item.addEventListener('click', () => {            
             item.parentElement.remove();
         });
-    })
+    });
 }
 
 
@@ -208,15 +207,10 @@ calMonGoal.addEventListener('click', (e) => {
 
 
 
-
-
-
-
-
-
-
-
-
 calendarSaveBtn.addEventListener('click',saveGoal);
 calendarCreateGo.addEventListener('click',createGoals);
-window.onload = loadGoal();
+
+window.onload = function() {
+    fillCalendar(todayDownload);
+    loadGoal();
+}
