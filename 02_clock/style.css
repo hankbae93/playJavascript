@@ -1,0 +1,192 @@
+:root {
+  --mainWhite: #f2f3f7;
+  --buttonWhite: -2px -2px 5px rgba(255, 255, 255, 1),
+    3px 3px 5px rgba(0, 0, 0, 0.07);
+  --buttonWhiteActive: inset -2px -2px 5px rgba(255, 255, 255, 1),
+    inset 3px 3px 5px rgba(0, 0, 0, 0.07);
+
+  --iconWhiteVer: #6a9bd8;
+}
+
+body {
+  background: var(--mainWhite);
+  font-family: "Montserrat", sans-serif;
+}
+
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 5vh 15vw;
+  box-sizing: border-box;
+}
+.container {
+  width: 100%;
+  height: 90vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 50px;
+  padding: 20px;
+  box-shadow: var(--buttonWhite);
+  box-sizing: border-box;
+}
+.contents {
+  overflow: hidden;
+  position: relative;
+  flex: 10;
+  width: 100%;
+}
+.content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  width: 300%;
+  height: 100%;
+
+  transition: all 0.3s ease;
+}
+.content > div {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+/* 디지털 시계 */
+#digital_clock {
+  flex-direction: column;
+}
+#digital_clock .day {
+  margin-bottom: 5px;
+}
+#digital_clock .day span {
+  display: inline-block;
+  padding: 5px 15px;
+  font-size: 1vw;
+}
+#digital_clock .day span.today {
+  color: #eb596e;
+}
+#digital_clock p {
+  text-align: center;
+  font-size: 10vw;
+}
+/* 아날로그시계 */
+#analog_clock {
+}
+#analog_clock .clock {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border: 3px solid #f2f3f7;
+  box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.05),
+    inset 0 -15px 15px rgba(255, 255, 255, 0.05), 0 15px 15px rgba(0, 0, 0, 0.3),
+    inset 0 15px 15px rgba(0, 0, 0, 0.3);
+  background: url(https://res.cloudinary.com/drymsmld5/image/upload/v1591030972/Codepen/Neumorphism%20Clock/clock-layout_ajtmw8.png)
+    center no-repeat;
+  background-size: 100%;
+  border-radius: 50%;
+}
+#analog_clock .clock::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 15px;
+  height: 15px;
+  background: #777777;
+  border-radius: 50%;
+  z-index: 500;
+}
+#analog_clock .clock > div {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+  width: 50%;
+  height: 50%;
+}
+#analog_clock .clock .min {
+  width: 190px;
+  height: 190px;
+}
+#analog_clock .clock .hrs {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+#analog_clock .clock .hrs::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 80px;
+  background: #ea526f;
+  border-radius: 8px 8px 0 0;
+  z-index: 1;
+}
+#analog_clock .clock .min::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 90px;
+  background: #777;
+  border-radius: 8px 8px 0 0;
+  z-index: 2;
+}
+#analog_clock .clock .sec {
+  width: 230px;
+  height: 230px;
+}
+#analog_clock .clock .sec::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 150px;
+  background: #777;
+  border-radius: 8px 8px 0 0;
+  z-index: 3;
+}
+
+/* 버튼  */
+.btns {
+  display: flex;
+  flex: 2;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0 20%;
+}
+.btns button {
+  display: block;
+  flex: 1;
+  padding: 0;
+  border: none;
+  outline: none;
+  width: 50px;
+  height: 50px;
+  background: var(--mainWhite);
+  box-shadow: var(--buttonWhite);
+  cursor: pointer;
+}
+.btns button:nth-child(2) {
+  margin: 0 15px;
+}
+.btns button.clicked {
+  box-shadow: var(--buttonWhiteActive);
+}
+
+.btns button i {
+  color: var(--iconWhiteVer);
+  font-size: 30px;
+}
