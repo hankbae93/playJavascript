@@ -113,7 +113,13 @@ function timerOn(e) {
 }
 
 function timeReset() {
-    timerWatch.innerText = "00 : 00 : 00 : 00";
+    if (stop) {
+        hour = minute = second = ms = 0;         
+        clearInterval(timerTickin);
+        timerWatch.innerText = "00 : 00 : 00 : 00";
+    } else {
+        return
+    }    
 }
 
 timerStart.addEventListener('click',timerOn);
