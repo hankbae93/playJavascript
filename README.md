@@ -1,6 +1,6 @@
 # playJavascript
 
-# make anything with Javascript for skill
+make anything with Javascript for skill
 
 ## 1. Planner APP
 
@@ -11,3 +11,8 @@ site: https://ranjafunc.github.io/playJavascript/01_planner2021/
 
 date: 2021-01-21 ~ 2021-01-22  
 site: https://ranjafunc.github.io/playJavascript/02_clock/
+
+## 3. Snake Game
+
+date: 2021-01-23 ~
+site: https://ranjafunc.github.io/playJavascript/03_snakeGame/

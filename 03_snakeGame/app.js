@@ -34,7 +34,7 @@ function startGame() {
     scoreBox.innerText = '점수 : 0점';
     paintSnake();
     randomApple();
-    intervals = setInterval(moveSnake, 800);
+    intervals = setInterval(moveSnake,200);
 }
 
 function moveSnake() {  
@@ -43,7 +43,8 @@ function moveSnake() {
         currentSnake[0] + direction > rule.row * rule.column - 1 || // 아랫벽에 부딪힌 경우
         (currentSnake[0] + direction) % rule.row === 0 && direction === 1 ||  // 오른쪽 벽에 부딪힌 경우 
         (currentSnake[0] + direction) % rule.row === rule.row - 1 && direction === -1 || //완쪽 벽
-        blocks[currentSnake[0] + direction].classList.contains('snake') // 자기 몸통쪽으로 방향키 눌렀을 때
+        blocks[currentSnake[0] + direction].classList.contains('snake') ||// 자기 몸통쪽으로 방향키 눌렀을 때
+        score > 9
     ) {
         return clearInterval(intervals);
     }
@@ -61,11 +62,15 @@ function moveSnake() {
         paintSnake();
         randomApple();
     }
+
+    
+
 }
 
 // 사과 등장 
 function randomApple() {
     const random = Math.floor(Math.random() * (blocks.length - 1));
+    blocks.forEach(block => block.classList.remove('apple'));
     blocks[random].classList.add('apple');
 }
 
@@ -84,8 +89,8 @@ function controlSnake(e) {
         case 40 :// 하  
             direction = rule.column;                     
             break;                
-    }
-    moveSnake();
+    }    
+    
 }
 
 // 뱀 출력
@@ -97,7 +102,7 @@ function paintSnake() {
 }
 
 
-document.addEventListener('keyup',controlSnake);
+document.addEventListener('keydown',controlSnake);
 start.addEventListener('click',startGame);
 
 
