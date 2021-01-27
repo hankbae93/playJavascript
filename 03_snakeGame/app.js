@@ -7,7 +7,8 @@ const
 const 
     rule = {
         row : 12,
-        column : 12       
+        column : 12,
+        endScore: 15       
     };
 // 세팅
 for (let i = 0; i < rule.column; i++) { // 열
@@ -43,9 +44,11 @@ function moveSnake() {
         currentSnake[0] + direction > rule.row * rule.column - 1 || // 아랫벽에 부딪힌 경우
         (currentSnake[0] + direction) % rule.row === 0 && direction === 1 ||  // 오른쪽 벽에 부딪힌 경우 
         (currentSnake[0] + direction) % rule.row === rule.row - 1 && direction === -1 || //완쪽 벽
-        blocks[currentSnake[0] + direction].classList.contains('snake') ||// 자기 몸통쪽으로 방향키 눌렀을 때
-        score > 9
-    ) {
+        blocks[currentSnake[0] + direction].classList.contains('snake') // 자기 몸통쪽으로 방향키 눌렀을 때    
+    ) {        
+        return clearInterval(intervals);
+    } else if (score > rule.endScore) {
+        alert('You Win');
         return clearInterval(intervals);
     }
     const tail = currentSnake.pop();
@@ -75,7 +78,7 @@ function randomApple() {
 }
 
 // 방향키 입력
-function controlSnake(e) {    
+function controlSnake(e) {        
     switch (e.keyCode) {
         case 37 : // 좌 
             direction = -1;                      
@@ -89,8 +92,7 @@ function controlSnake(e) {
         case 40 :// 하  
             direction = rule.column;                     
             break;                
-    }    
-    
+    }        
 }
 
 // 뱀 출력
