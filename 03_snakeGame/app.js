@@ -8,7 +8,7 @@ const
     rule = {
         row : 12,
         column : 12,
-        endScore: 15       
+        endScore: 144       
     };
 // 세팅
 for (let i = 0; i < rule.column; i++) { // 열
