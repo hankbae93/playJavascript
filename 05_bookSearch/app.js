@@ -4,7 +4,7 @@ const form = document.querySelector('#searchBar');
 const input = form.querySelector('input');
 const url = "https://dapi.kakao.com/v3/search/book";
 const _myHeaders = new Headers();
-_myHeaders.append('Authorization', "KakaoAK ece7d86d98810ba9ea844fe245cdb487");
+_myHeaders.append('Authorization', 카카오api);
 
 let keyword = "미움받을 용기";
 let _getQuery = `?query=${keyword}`;
