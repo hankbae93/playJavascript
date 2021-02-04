@@ -22,9 +22,7 @@ function checkBall(e) {
     // 사용자 입력 볼 숫자 저장
     myBall = input.value;
     let strike = 0;
-    let ball = 0;    
-
-    
+    let ball = 0;        
 
     // 비교
     for(let i = 0; i < baseBall.length; i++) {
