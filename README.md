@@ -24,3 +24,7 @@ site: https://ranjafunc.github.io/playJavascript/04_numberBaseball/
 ## 5. bookSearch
 
 site: https://ranjafunc.github.io/playJavascript/05_bookSearch/
+
+## 6. cardFlip
+
+site: https://ranjafunc.github.io/playJavascript/06_cardFlip/
