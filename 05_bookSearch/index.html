@@ -3,22 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APi 연습</title>
+    <title>APi 연습 - 책검색</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            text-align: center;
+        }
+        #searchBar input {
+            padding:5px 3px;
+        }        
         .wrap {
             display: flex;
+            justify-content:center;
+            align-items: center;
+            flex-direction: column;
         }
         .content {
-            display: flex;
-            flex-direction: column;
-            margin: 0 10px;
-            width: 200px;
+            display: flex;            
+            margin: 0 10px 10px;
+            width: 70%;
             border:1px solid #ccc;
         }
+        .content > div {
+            padding: 10px;
+        }
+        .content h2 {            
+            margin-bottom:15px;
+        }
+        .content p {
+            text-align: left;
+        }
+        
     </style>
 </head>
 <body>
-    <h1>내 사이트</h1>
+    <h1>책검색</h1>
     <form id="searchBar">
         <input type="text" id="search">
     </form>

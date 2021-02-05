@@ -4,12 +4,10 @@ const form = document.querySelector('#searchBar');
 const input = form.querySelector('input');
 const url = "https://dapi.kakao.com/v3/search/book";
 const _myHeaders = new Headers();
-_myHeaders.append('Authorization', 카카오api);
+_myHeaders.append('Authorization',  "KakaoAK ece7d86d98810ba9ea844fe245cdb487");
 
 let keyword = "미움받을 용기";
 let _getQuery = `?query=${keyword}`;
-
-
 
 const searchBook = (e) => {
     e.preventDefault();
@@ -25,21 +23,19 @@ const search = (keyword) => {
             headers: _myHeaders
         })
         .then((temp4) => temp4.json() )
-        .then(json => {
-            createBookManual(json);
-        });
+        .then(json => { createBookManual(json); })
+        .catch((err) => {alert('찾으시는 책이 없습니다;;')});
 }
-
-
-
 
 function createBookManual(json) {
     const con = document.createElement('div');
     con.classList.add('content');
     con.innerHTML = `
-        <h1>${json.documents[0].title}</h1>
-        <p>${json.documents[0].contents}</p>
         <img src="${json.documents[0].thumbnail}" />
+        <div>
+            <h2>${json.documents[0].title}</h2>
+            <p>${json.documents[0].contents}</p>
+        </div>
     `;
     wrap.append(con);
 }
