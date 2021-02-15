@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Reggae One", cursive;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.App {
+  width: 500px;
+  height: 500px;
+}
+.row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 33.3333%;
+}
+.row .box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32%;
+  height: 95%;
+  border-radius: 10px;
+  background: rgb(43, 43, 43);
+  transform: perspective(160px) translate(0, 0);
+  border: 1px solid #ccc;
+  color: #fff;
+  font-size: 120px;
+  box-shadow: 3px 3px 6px 1px rgb(0 0 0 / 40%);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.row .box.clicked {
+  background: #fff;
+  color: rgb(43, 43, 43);
+  transform: perspective(160px) rotateX(180deg);
+}
+.row .box:nth-child(2) {
+  margin: 0 1%;
+}
