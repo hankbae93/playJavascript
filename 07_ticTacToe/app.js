@@ -35,16 +35,16 @@ function winCheckLogic(turn, rowIndex, colIndex) {
 }
 
 
-BOX.forEach((item) => {
-    item.addEventListener('click', (e) => {     
+BOX.forEach((box) => {
+    box.addEventListener('click', (e) => {     
         if (win) return;
         const rowIndex = rows.indexOf(e.target.parentNode);
         const colIndex = boxes[rowIndex].indexOf(e.target);
         console.log(`${rowIndex}번째 줄 ${colIndex}번째 칸`);
 
-        if (item.textContent === '') {
-            item.textContent = turn;
-            item.classList.add('clicked');
+        if (box.textContent === '') {
+            box.textContent = turn;
+            box.classList.add('clicked');
             fullCheck++;
             winCheckLogic(turn, rowIndex, colIndex); 
             if (!win) {

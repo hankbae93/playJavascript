@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지뢰찾기</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>    
+    <div class="create_game">
+        <select>
+            <option value="easy">초급</option>
+            <option value="normal">중급</option>
+            <option value="hard">상급</option>
+            <option value="hell">지옥</option>
+        </select>
+        <button type="button" id="create">실행</button>
+    </div>
+    <div id="timer">1</div>
+    <table id="board"></table>
+    <div id="result"></div>
+    <script src="./app.js"></script>
+</body>
+</html>

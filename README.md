@@ -32,3 +32,7 @@ site : https://ranjafunc.github.io/playJavascript/06_cardFlip/
 # 7 - ticTacToe
 
 site : https://ranjafunc.github.io/playJavascript/07_ticTacToe/
+
+# 8 - Minesweeper
+
+site : https://ranjafunc.github.io/playJavascript/08_Minesweeper/
