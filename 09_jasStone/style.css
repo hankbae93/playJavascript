@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Dela Gothic One", cursive;
+}
+
+body {
+}
+
+.hide {
+  display: none;
+}
+
+.wrap {
+  height: 100vh;
+}
+
+/* 컨테이너 */
+#rival,
+#my {
+  position: relative;
+}
+
+#rival.turn .deck,
+#my.turn .deck {
+  background-color: #d8e3e7;
+}
+
+/* 덱 */
+#rival .deck {
+  border-radius: 0 0 15px 15px;
+}
+
+#my .deck {
+  border-radius: 15px 15px 0 0;
+}
+
+.deck {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 170px;
+  background-color: rgba(216, 227, 231, 0.2);
+  transition: all 0.3s ease;
+}
+
+.deck .card:hover {
+  background-color: #fff;
+}
+
+/* 필드 */
+#field {
+  text-align: right;
+}
+
+#turn_btn {
+  margin: 109px 15px;
+  padding: 5px 10px;
+  outline: none;
+  cursor: pointer;
+}
+
+.field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: 35px 0; */
+  height: 168px;
+}
+
+.field .card {
+  background-color: #2b2b2b;
+  color: #fff;
+}
+
+/* 카드 */
+.card {
+  position: relative;
+  margin: 10px;
+  width: 100px;
+  height: 150px;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.card > div {
+  position: absolute;
+  padding: 5px;
+}
+
+.att {
+  left: 0;
+  bottom: 0;
+  color: #f05945;
+}
+
+.hp {
+  right: 0;
+  bottom: 0;
+  color: #798777;
+}
+
+.cost {
+  right: 0;
+  top: 0;
+  color: #51c4d3;
+}
+
+.hero {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hero .card {
+  background-color: #ffcc29;
+}
+
+.current-cost {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}

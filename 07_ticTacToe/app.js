@@ -53,9 +53,12 @@ BOX.forEach((box) => {
                 } else {
                     turn = 'X';
                 } 
+                setTimeout(() => {
+                    console.log('컴퓨터 턴');
+                }, 1000)
             } else {
                 alert(`${turn} 님의 승리!`);
-                turn = 'X';
+                turn = 'X';                
             }                          
         } 
     });
