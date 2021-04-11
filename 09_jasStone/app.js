@@ -17,6 +17,15 @@ const rival = {
     cost: rivalContainer.querySelector('.current-cost span'),
 };
 
+function heroProduce(obj) {    
+    const card = prototype_card.cloneNode(true);
+    const data = cardPlant(true);
+    card.querySelector('.att').textContent = data.att;
+    card.querySelector('.hp').textContent = data.hp;    
+    obj.heroData = data;
+    obj.hero.append(card);            
+}
+
 function deckProuduce(length, obj) {    
     for (let i = 0; i < length; i++) {
         const card = prototype_card.cloneNode(true);
@@ -30,11 +39,15 @@ function deckProuduce(length, obj) {
 }
 
 function Card(hero) {
-    this.att = Math.ceil(Math.random() * 5);
-    this.hp = Math.ceil(Math.random() * 5);
-    if (!hero) { //영웅이 없으면 코스트 생성
+    if (hero) {
+        this.att = Math.ceil(Math.random() * 5);
+        this.hp = Math.ceil(Math.random() * 5) + 25;
+    } else {
+        this.att = Math.ceil(Math.random() * 5);
+        this.hp = Math.ceil(Math.random() * 5);
         this.cost = Math.ceil(Math.random() * 5);
     }    
+   
 }
 
 function cardPlant(hero) {
@@ -43,7 +56,9 @@ function cardPlant(hero) {
 
 function setting() {
     deckProuduce(5, my);
+    heroProduce(my);
     deckProuduce(5, rival);
+    heroProduce(rival);
 }
 
 setting();

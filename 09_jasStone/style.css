@@ -50,6 +50,19 @@ body {
   background-color: #fff;
 }
 
+/* 영웅 */
+.hero .card {
+  position: relative;
+}
+
+.hero .card::after {
+  content: "HERO";
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  transform: translateX(-50%);
+}
+
 /* 필드 */
 #field {
   text-align: right;
